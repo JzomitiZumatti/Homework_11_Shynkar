@@ -12,5 +12,17 @@ public class NumberRadix {
             sum += Integer.parseInt(String.valueOf(num.charAt(i)));
         }
         System.out.printf("The radix sum of %d number is: %d", randNumber, sum);
+        System.out.printf("\nThe radix sum of %d number is: %d", randNumber, radixSum(randNumber));
+    }
+
+    public static int radixSum(int randNumber) {
+        int radixSum = 0;
+        int lengthOfNumber = String.valueOf(randNumber).length();
+        for (int i = lengthOfNumber - 1; i >= 0; i--) {
+            double divider = Math.pow(10, i);
+            radixSum += randNumber / (int) divider;
+            randNumber %= divider;
+        }
+        return radixSum;
     }
 }
